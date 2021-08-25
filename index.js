@@ -56,8 +56,9 @@ app.get('/products/new', (req, res) => {
 app.post('/products', async (req, res) => {
     const newProduct = new Product(req.body);
     await newProduct.save();
-    console.log(newProduct);
-    res.send('procesando los productos')
+    res.redirect(`/products/${newProduct._id}`)
+    // console.log(newProduct);
+    // res.send('procesando los productos')
 })
 
 // ----------------------------------------------
