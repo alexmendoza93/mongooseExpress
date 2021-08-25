@@ -26,11 +26,17 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view egine', 'ejs');
 // esto es para hacer ejs nuestro motor
 
-
-
-app.get('/dog', (req, res) => {
-    res.send('woof')
+// -----------------------------------------
+// esto espera a una respuesta del servidor en este caso mongod
+app.get('/products',async (req, res) => {
+    const products = await Product.find({})
+    console.log(products)
+    res.send('Los productos se estan cargando, esto puede tardar un poco')
 })
+// -------------------------------------------
+// app.get('/dog', (req, res) => {
+//     res.send('woof')
+// })
 // esto imprime woof en: localhost:3000/dog, corriendo nodemon index.js
 
 
