@@ -23,17 +23,24 @@ mongoose.connect('mongodb://localhost:27017/farmStand', {useNewUrlParser: true, 
 
 app.set('views', path.join(__dirname, 'views'));
 // esto es para correr el archide desde cualquier lugar
-app.set('view egine', 'ejs');
+app.set('view engine', 'ejs');
 // esto es para hacer ejs nuestro motor
 
 // -----------------------------------------
 // esto espera a una respuesta del servidor en este caso mongod
+// app.get('/products',async (req, res) => {
+//     const products = await Product.find({})
+//     console.log(products)
+//     res.send('Los productos se estan cargando, esto puede tardar un poco')
+// })
+// -------------------------------------------
+// ahora respondemos con un template de ejs
 app.get('/products',async (req, res) => {
     const products = await Product.find({})
     console.log(products)
-    res.send('Los productos se estan cargando, esto puede tardar un poco')
+    res.render('products/index')
 })
-// -------------------------------------------
+// ----------------------------------------------
 // app.get('/dog', (req, res) => {
 //     res.send('woof')
 // })
