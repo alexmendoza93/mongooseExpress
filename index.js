@@ -45,6 +45,22 @@ app.get('/products',async (req, res) => {
 //     res.send('woof')
 // })
 // esto imprime woof en: localhost:3000/dog, corriendo nodemon index.js
+// ----------------------------------------------
+// detalles de productos
+// app.get('/products/:id', async(req, res) => {
+//     const {id} = req.params;
+//     const product = await Product.findById(id);
+//     console.log(product);
+//     res.send('details page')
+// })
+// y listo mostramos el mensaje de details page simulando mostrar un template de ejs 
+//  ahora viene template de ejs
+app.get('/products/:id', async(req, res) => {
+    const {id} = req.params;
+    const product = await Product.findById(id);
+    console.log(product);
+    res.render('products/show', {product})
+})
 
 
 
@@ -53,3 +69,4 @@ app.listen(3000, () => {
 })
 
 // todo esto se necesita para iniciar un servidor
+
