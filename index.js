@@ -5,6 +5,19 @@ const app = express();
 const path = require('path');
 // habilitar path
 
+// --------------------------------------
+// importamos mongoose
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/shopApp', {useNewUrlParser: true, useUnifiedTopology: true})
+    .then(() => {
+        console.log('conexion abierta')
+    })
+    .catch(err => {
+        console.log('error')
+        console.log(err)
+    })
+// ------------------------------------------
+
 app.set('views', path.join(__dirname, 'views'));
 // esto es para correr el archide desde cualquier lugar
 app.set('view egine', 'ejs');
