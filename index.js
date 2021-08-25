@@ -4,11 +4,14 @@ const app = express();
 // ejecutar express
 const path = require('path');
 // habilitar path
+// -----------------------------------
+// requerimos nuestro modelo
+const Product =require('./models/product');
 
 // --------------------------------------
 // importamos mongoose
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/shopApp', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb://localhost:27017/farmStand', {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {
         console.log('conexion abierta')
     })
