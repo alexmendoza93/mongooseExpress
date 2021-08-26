@@ -15,12 +15,17 @@
         <input type="number" name="price" id="price" placeholder="precio del producto">
         <label for="category">Selecciona Categoria</label>
         <select name="category" id="category">
-            <option value="fruit">Fruta</option>
+            <% for (let category of categories) {%> 
+                <option value="<%=category %>"><%=category %></option>
+            <% } %> 
+            <!-- <option value="fruit">Fruta</option>
             <option value="vegetable">Verdura</option>
-            <option value="dairy">Lacteos</option>
+            <option value="dairy">Lacteos</option> -->
+            <!-- asi funcionaba antes -->
         </select>
         <button>Agregar producto</button>
 
     </form>
+    <a href="/products">Volver</a>
 </body>
 </html>
