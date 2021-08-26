@@ -98,6 +98,13 @@ app.put('/products/:id', async (req, res) => {
     // este mensaje sirve para probar si funciona
 })
 // para editar necesitaremos instalar: method-override
+// ----------------------------------------------
+// es hora de eliminar productos
+app.delete('/products/:id', async (req, res) => {
+    const { id } = req.params;
+    const deleteProduct = await Product.findByIdAndDelete(id);
+    res.redirect('/products');
+})
 
 app.listen(3000, () => {
     console.log('estamos conectados')
