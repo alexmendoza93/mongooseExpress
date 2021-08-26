@@ -20,6 +20,9 @@ mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true,
         console.log(err)
     })
 // ------------------------------------------
+const methodOverride = require('method-override')
+
+app.use(methodOverride('_method'));
 
 app.set('views', path.join(__dirname, 'views'));
 // esto es para correr el archide desde cualquier lugar
@@ -78,7 +81,21 @@ app.get('/products/:id', async (req, res) => {
     res.render('products/show', { product })
 })
 
+app.get('/products/:id/edit', async (req, res) => {
+    const { id } = req.params;
+    const product = await Product.findById(id);
+    res.render('products/edit', { product })
+})
 
+app.put('/products/:id', async (req, res) => {
+    const { id } = req.params;
+    const product = await Product.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
+    res.redirect(`/products/${product._id}`);
+    // console.log(req.body);
+    // res.send('PUT!!!');
+    // este mensaje sirve para probar si funciona
+})
+// para editar necesitaremos instalar: method-override
 
 app.listen(3000, () => {
     console.log('estamos conectados')

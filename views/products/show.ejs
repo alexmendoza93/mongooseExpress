@@ -9,9 +9,10 @@
   <body>
     <h1><%= product.name %></h1>
     <ul>
-      <li>Price: $<%= product.price %></li>
-      <li>category: <%= product.category %></li>
+      <li>Precio: $<%= product.price %></li>
+      <li>categoria: <%= product.category %></li>
     </ul>
     <a href="/products">Todos los productos</a>
+    <a href="/products/<%= product._id %>/edit">Todos los productos</a>
   </body>
 </html>
